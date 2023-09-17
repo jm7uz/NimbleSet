@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NimbleSet.Presentation", "NimbleSet.Presentation\NimbleSet.Presentation.csproj", "{7F4B644A-4B0E-4FD6-B54E-988B8134F94E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NimbleSet.Presentation", "NimbleSet.Presentation\NimbleSet.Presentation.csproj", "{7F4B644A-4B0E-4FD6-B54E-988B8134F94E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{3571F6CA-B805-4E4A-92D1-59CD3CB699E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{16B2D675-1493-4EED-AFF1-40A7B6407E6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{7F4B644A-4B0E-4FD6-B54E-988B8134F94E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F4B644A-4B0E-4FD6-B54E-988B8134F94E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F4B644A-4B0E-4FD6-B54E-988B8134F94E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3571F6CA-B805-4E4A-92D1-59CD3CB699E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3571F6CA-B805-4E4A-92D1-59CD3CB699E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3571F6CA-B805-4E4A-92D1-59CD3CB699E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3571F6CA-B805-4E4A-92D1-59CD3CB699E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16B2D675-1493-4EED-AFF1-40A7B6407E6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16B2D675-1493-4EED-AFF1-40A7B6407E6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16B2D675-1493-4EED-AFF1-40A7B6407E6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16B2D675-1493-4EED-AFF1-40A7B6407E6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
