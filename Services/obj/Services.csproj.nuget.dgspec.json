@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Source\\Repos\\NimbleSet\\NimbleSet.Presentation\\NimbleSet.Presentation.csproj": {}
+    "C:\\Users\\User\\Source\\Repos\\NimbleSet\\Services\\Services.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Source\\Repos\\NimbleSet\\NimbleSet.Presentation\\NimbleSet.Presentation.csproj": {
+    "C:\\Users\\User\\Source\\Repos\\NimbleSet\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\NimbleSet\\NimbleSet.Presentation\\NimbleSet.Presentation.csproj",
-        "projectName": "NimbleSet.Presentation",
-        "projectPath": "C:\\Users\\User\\Source\\Repos\\NimbleSet\\NimbleSet.Presentation\\NimbleSet.Presentation.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\NimbleSet\\Services\\Services.csproj",
+        "projectName": "Services",
+        "projectPath": "C:\\Users\\User\\Source\\Repos\\NimbleSet\\Services\\Services.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Source\\Repos\\NimbleSet\\NimbleSet.Presentation\\obj\\",
+        "outputPath": "C:\\Users\\User\\Source\\Repos\\NimbleSet\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
