@@ -1,7 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\NimbleSet.Data",
+    "\\NimbleSet.Data\\Databases",
+    "\\NimbleSet.Data\\IRepositories",
+    "\\NimbleSet.Data\\Repositories",
+    "\\NimbleSet.Domain",
+    "\\NimbleSet.Domain\\Commons",
+    "\\NimbleSet.Domain\\Configurations",
+    "\\NimbleSet.Domain\\Entities",
+    "\\NimbleSet.Domain\\Enums"
   ],
-  "SelectedNode": "\\NimbleSet.sln",
+  "SelectedNode": "\\NimbleSet.Data\\Repositories\\RepositoryAsync.cs",
   "PreviewInSolutionExplorer": false
 }
