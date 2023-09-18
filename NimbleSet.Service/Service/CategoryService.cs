@@ -1,38 +1,118 @@
 ﻿using Services.Dtos;
 using Services.Interfaces;
+using Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Data.IRepositories;
+using Domain.Entities;
+using NimbleSet.Service.Exceptions;
 
 namespace NimbleSet.Service.Service
 {
     public class CategoryService : ICategoryService
     {
-        public Task<bool> DeleteAsync(long id)
+        private long _id;
+        private readonly IRepositoryAsync<Category> repositoryCategory = new Repository<Category>();
+        public async Task<bool> RemoveAsync(long id)
         {
-            throw new NotImplementedException();
+            var category = await repositoryCategory.SelecttByIdAsync(id);
+
+            if (category is null)
+                throw new CustomException(404, "Category is not found ");
+
+            await repositoryCategory.DeleteAsync(id);
+
+            return true;
         }
 
-        public Task<List<CategoryForRezultDto>> GetAllAsync()
+        public async Task<List<CategoryForRezultDto>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            List<Category> categories = new List<Category>();
+            List<CategoryForRezultDto> mapCategories = new List<CategoryForRezultDto>();
+
+            foreach (var category in categories)
+            {
+                CategoryForRezultDto rezultDto = new CategoryForRezultDto()
+                {
+                    Id = category.Id,
+                    Name = category.Name,
+                };
+                mapCategories.Add(rezultDto);
+            }
+            return mapCategories;
         }
 
-        public Task<CategoryForRezultDto> GetByIdAsync(long id)
+        public async Task<CategoryForRezultDto> GetByIdAsync(long id)
         {
-            throw new NotImplementedException();
+            var category = await repositoryCategory.SelecttByIdAsync(id);
+
+            if(category is null)
+            {
+                throw new CustomException(404, "Category is not null");
+            }
+            CategoryForRezultDto rezultDto = new CategoryForRezultDto()
+            {
+                Id = category.Id,
+                Name = category.Name,
+            };
+            return rezultDto;
         }
 
-        public Task<CategoryForRezultDto> InsertAsync(CategoryForCreationDto categoryDto)
+        public async Task<CategoryForRezultDto> CreateAsync(CategoryForCreationDto categoryDto)
         {
-            throw new NotImplementedException();
+            var category = (await repositoryCategory.SelectAllAsync()).
+                FirstOrDefault(c => c.Name.ToLower() == categoryDto.CategoryName);
+            if(category != null)
+            {
+                throw new CustomException(409, "Category is already exist");
+            }
+            Category category1 = new Category
+            {
+                Id = _id,
+                Name = categoryDto.CategoryName,
+                CreatedAt = DateTime.UtcNow
+            };
+            await repositoryCategory.InsertAsync(category1);
+            CategoryForRezultDto rezultDto = new CategoryForRezultDto()
+            {
+                Name = category1.Name,
+                Id = category1.Id
+            };
+            return rezultDto;
         }
 
-        public Task<CategoryForRezultDto> UpdateAsync(CategoryForUpdateDto user)
+        public async Task<CategoryForRezultDto> UpdateAsync(CategoryForUpdateDto user)
         {
-            throw new NotImplementedException();
+            var category = await repositoryCategory.SelecttByIdAsync(user.Id);
+            if(category is  null)
+                throw new CustomException(404,"Category is not found");
+            var mapCategory = new Category()
+            {
+                Name = category.Name,
+            };
+            await repositoryCategory.UpdateAsync(mapCategory);
+            var resultDto = new CategoryForRezultDto()
+            {
+                Id = user.Id,
+                Name = category.Name,
+            };
+            return resultDto;
+        }
+        public async Task GenerateIdAsync()
+        {
+            var categories = await repositoryCategory.SelectAllAsync();
+            if (categories.Count == 0)
+            {
+                this._id = 1;
+            }
+            else
+            {
+                var student = categories[categories.Count - 1];
+                this._id = ++student.Id;
+            }
         }
     }
 }

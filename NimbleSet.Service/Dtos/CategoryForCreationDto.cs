@@ -8,5 +8,6 @@ namespace Services.Dtos
 {
     public class CategoryForCreationDto
     {
+        public string CategoryName { get; set; }
     }
 }
