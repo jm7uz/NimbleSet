@@ -15,7 +15,7 @@ namespace NimbleSet.Service.Service
     public class OrderService : IOrderService
     {
         private long _id;
-        private readonly IRepositoryAsync<Order> repositoryOrder = new Repository<Order>();
+        private readonly IRepositoryAsync<Order> repositoryOrder = new RepositoryAsync<Order>();
         public async Task GenerateIdAsync()
         {
             var orders = await repositoryOrder.SelectAllAsync();

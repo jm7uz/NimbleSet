@@ -15,7 +15,7 @@ namespace NimbleSet.Service.Service
     public class CategoryService : ICategoryService
     {
         private long _id;
-        private readonly IRepositoryAsync<Category> repositoryCategory = new Repository<Category>();
+        private readonly IRepositoryAsync<Category> repositoryCategory = new RepositoryAsync<Category>();
         public async Task<bool> RemoveAsync(long id)
         {
             var category = await repositoryCategory.SelecttByIdAsync(id);
@@ -61,6 +61,23 @@ namespace NimbleSet.Service.Service
             return rezultDto;
         }
 
+        public async Task<CategoryForRezultDto> UpdateAsync(CategoryForUpdateDto categoryDto)
+        {
+            var category = await repositoryCategory.SelecttByIdAsync(categoryDto.Id);
+            if(category is  null)
+                throw new CustomException(404,"Category is not found");
+            var mapCategory = new Category()
+            {
+                Name = category.Name,
+            };
+            await repositoryCategory.UpdateAsync(mapCategory);
+            var resultDto = new CategoryForRezultDto()
+            {
+                Id = categoryDto.Id,
+                Name = category.Name,
+            };
+            return resultDto;
+        }
         public async Task<CategoryForRezultDto> CreateAsync(CategoryForCreationDto categoryDto)
         {
             var category = (await repositoryCategory.SelectAllAsync()).
@@ -83,23 +100,6 @@ namespace NimbleSet.Service.Service
             return rezultDto;
         }
 
-        public async Task<CategoryForRezultDto> UpdateAsync(CategoryForUpdateDto user)
-        {
-            var category = await repositoryCategory.SelecttByIdAsync(user.Id);
-            if(category is  null)
-                throw new CustomException(404,"Category is not found");
-            var mapCategory = new Category()
-            {
-                Name = category.Name,
-            };
-            await repositoryCategory.UpdateAsync(mapCategory);
-            var resultDto = new CategoryForRezultDto()
-            {
-                Id = user.Id,
-                Name = category.Name,
-            };
-            return resultDto;
-        }
         public async Task GenerateIdAsync()
         {
             var categories = await repositoryCategory.SelectAllAsync();
