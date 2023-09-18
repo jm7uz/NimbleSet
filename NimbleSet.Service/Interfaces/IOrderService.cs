@@ -1,18 +1,17 @@
-﻿using Services.Dtos;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Text;
+using Services.Dtos;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Services.Interfaces
 {
     public interface IOrderService
     {
-        public Task<bool> DeleteAsync(long id);
+        public Task<bool> RemoveAsync(long id);
         public Task<List<OrderForRezultDto>> GetAllAsync();
         public Task<OrderForRezultDto> GetByIdAsync(long id);
-        public Task<OrderForRezultDto> UpdateAsync(OrderForUpdateDto user);
-        public Task<OrderForRezultDto> InsertAsync(long customerId,decimal totalAmaunt);
+        public Task<OrderForRezultDto> CreateAsync(long customerId);
     }
 }

@@ -1,13 +1,13 @@
-﻿using Services.Dtos;
-using Services.Interfaces;
-using Data.Repositories;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Data.IRepositories;
+using Services.Dtos;
 using Domain.Entities;
+using Data.Repositories;
+using Data.IRepositories;
+using Services.Interfaces;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 using NimbleSet.Service.Exceptions;
 
 namespace NimbleSet.Service.Service
@@ -73,7 +73,6 @@ namespace NimbleSet.Service.Service
             {
                 Id = _id,
                 Name = categoryDto.CategoryName,
-                CreatedAt = DateTime.UtcNow
             };
             await repositoryCategory.InsertAsync(category1);
             CategoryForRezultDto rezultDto = new CategoryForRezultDto()
