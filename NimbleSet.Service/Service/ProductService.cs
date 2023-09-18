@@ -8,29 +8,29 @@ using System.Threading.Tasks;
 
 namespace NimbleSet.Service.Service
 {
-    public class OrderService : IOrderService
+    public class ProductService : IProductService
     {
         public Task<bool> DeleteAsync(long id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<OrderForRezultDto>> GetAllAsync()
+        public Task<List<ProductForRezultDto>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<OrderForRezultDto> GetByIdAsync(long id)
+        public Task<ProductForRezultDto> GetByIdAsync(long id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<OrderForRezultDto> InsertAsync(long customerId, decimal totalAmaunt)
+        public Task<ProductForRezultDto> InsertAsync(ProductForCreationDto user)
         {
             throw new NotImplementedException();
         }
 
-        public Task<OrderForRezultDto> UpdateAsync(OrderForUpdateDto user)
+        public Task<ProductForRezultDto> UpdateAsync(ProductForUpdateDto user)
         {
             throw new NotImplementedException();
         }
