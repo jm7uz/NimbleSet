@@ -1,4 +1,5 @@
-﻿using Services.Dtos;
+﻿using Domain.Entities;
+using Services.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,9 @@ namespace Services.Interfaces
 {
     public interface IOrderDetailsService
     {
-        public Task<bool> DeleteAsync(long id);
-        public Task<List<CategoryForRezultDto>> GetAllAsync();
-        public Task<CategoryForRezultDto> GetByIdAsync(long id);
-        public Task<CategoryForRezultDto> UpdateAsync(long orderId, long productId, long quantity);
-        public Task<CategoryForRezultDto> InsertAsync(long orderId,long productId,long quantity );
+        public Task<bool> RemoveAsync(long id);
+        public Task<List<OrderDetails>> GetAllAsync();
+        public Task<List<OrderDetails>> GetByIdAsync(long customerId);
+        public Task<OrderDetails> CreateAsync(OrderDetails orderDetails );
     }
 }

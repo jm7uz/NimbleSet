@@ -41,7 +41,6 @@ namespace NimbleSet.Service.Service
 
             return true;
         }
-
         public async Task<List<ProductForRezultDto>> GetAllAsync()
         {
             List<Product> products = await productRepository.SelectAllAsync();
@@ -62,7 +61,6 @@ namespace NimbleSet.Service.Service
             }
             return productsForRezults;
         }
-
         public async Task<ProductForRezultDto> GetByIdAsync(long id)
         {
             var product = await productRepository.SelecttByIdAsync(id);
@@ -79,7 +77,6 @@ namespace NimbleSet.Service.Service
             };
             return productForRezult;
         }
-
         public async Task<ProductForRezultDto> UpdateAsync(ProductForUpdateDto productdto)
         {
             var product = await productRepository.SelecttByIdAsync(productdto.Id);
@@ -123,11 +120,13 @@ namespace NimbleSet.Service.Service
             }
             Product product1 = new Product()
             {
+                Id = _id,
                 Name = productdto.Name, 
                 Price = productdto.Price,
                 CategoryId= productdto.CategoryId,
                 Description = productdto.Description,
                 StockQuantity = productdto.StockQuantity,
+
             };
             await productRepository.InsertAsync(product1);
 
