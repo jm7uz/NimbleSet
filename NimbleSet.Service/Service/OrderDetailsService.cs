@@ -1,6 +1,7 @@
 ﻿using Data.IRepositories;
 using Data.Repositories;
 using Domain.Entities;
+using NimbleSet.Service.Exceptions;
 using Services.Dtos;
 using Services.Interfaces;
 using System;
@@ -13,35 +14,61 @@ namespace NimbleSet.Service.Service
 {
     public class OrderDetailsService : IOrderDetailsService
     {
-
         private long _id;
-        private readonly IRepositoryAsync<OrderDetails> repositoryOrderDetails = new Repository<OrderDetails>();
-        public Task<bool> DeleteAsync(long id)
+        private readonly IRepositoryAsync<Order> orderRepository = new RepositoryAsync<Order>();
+        private readonly IRepositoryAsync<OrderDetails> repositoryOrderDetails = new RepositoryAsync<OrderDetails>();
+        public async Task<bool> RemoveAsync(long id)
         {
+            var orderDeteils = await repositoryOrderDetails.SelecttByIdAsync(id);
 
+            if (orderDeteils is null)
+                throw new CustomException(404, "Product is not found ");
 
-            throw new NotImplementedException();
+            await repositoryOrderDetails.DeleteAsync(id);
+
+            return true;
         }
 
-        public Task<List<CategoryForRezultDto>> GetAllAsync()
+        public async Task<List<OrderDetails>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            List<OrderDetails> orderDeteils = await repositoryOrderDetails.SelectAllAsync();
+            return  orderDeteils;
         }
 
-        public Task<CategoryForRezultDto> GetByIdAsync(long id)
+        public async Task<List<OrderDetails>> GetByIdAsync(long customerId)
         {
-            throw new NotImplementedException();
+            var  orders  = await orderRepository.SelectAllAsync();
+            List<OrderDetails> orderDetailses = new List<OrderDetails>();
+
+            foreach (var item in orders)
+            {
+                if (item.CustomerId == customerId)
+                {
+                    foreach (var item1 in orderDetailses)
+                    {
+                        if (item1.OrderId == item.Id)
+                        {
+                            orderDetailses.Add(item1);
+                        }
+                    }
+                }
+            }
+            return orderDetailses;
         }
 
-        public Task<CategoryForRezultDto> InsertAsync(long orderId, long productId, long quantity)
+        public async Task<OrderDetails> CreateAsync(OrderDetails orderDetails)
         {
-            throw new NotImplementedException();
+            OrderDetails orderDetails1 = new OrderDetails()
+            {
+                OrderId = orderDetails.OrderId,
+                Id = _id,
+                ProductId = orderDetails.ProductId,
+                Quantity = orderDetails.Quantity,
+            };
+            await repositoryOrderDetails.InsertAsync(orderDetails1); 
+            return orderDetails1;
         }
 
-        public Task<CategoryForRezultDto> UpdateAsync(long orderId, long productId, long quantity)
-        {
-            throw new NotImplementedException();
-        }
         public async Task GenerateIdAsync()
         {
             var orderDetailses = await repositoryOrderDetails.SelectAllAsync();

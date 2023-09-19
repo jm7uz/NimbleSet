@@ -111,6 +111,8 @@ namespace NimbleSet.Service.Service
                 throw new CustomException(409, "User is already exist");
             User user1 = new User()
             {
+
+                Id = _id,
                 Email = userCreationDto.Email,
                 FirstName = userCreationDto.FirstName,
                 LastName = userCreationDto.LastName,

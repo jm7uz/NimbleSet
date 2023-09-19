@@ -78,11 +78,12 @@ namespace NimbleSet.Service.Service
         {
             Order order = new Order()
             {
+                Id = _id,
                 CustomerId = customerId,
             };
             OrderForRezultDto rezultDto = new OrderForRezultDto()
             {
-                Id= order.Id,
+                Id = order.Id,
                 CustomerId = order.CustomerId,
                 OrderDate = order.CreatedAt
             };
