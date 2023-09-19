@@ -10,6 +10,7 @@ namespace Domain.Entities
     public class Order : AudiTable
     {
         public long CustomerId { get; set; }
+
     
     }
 }
