@@ -10,10 +10,10 @@ namespace Services.Interfaces
     public interface IUserService
     {
 
-        public Task<bool> DeleteAsync (long id);
+        public Task<bool> RemoveAsync (long id);
         public Task<List<UserForRezultDto>> GetAllAsync();
         public Task<UserForRezultDto> GetByIdAsync(long id);
         public Task<UserForRezultDto> UpdateAsync(UserForUpdateDto user);
-        public Task <UserForRezultDto>  InsertAsync (UserForCreationDto user);
+        public Task <UserForRezultDto>  CreateAsync (UserForCreationDto user);
     }
 }

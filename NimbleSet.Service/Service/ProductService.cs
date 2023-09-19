@@ -15,6 +15,7 @@ namespace NimbleSet.Service.Service
     public class ProductService : IProductService
     {
         private long _id;
+        private readonly IRepositoryAsync<Category> repositoryAsync = new RepositoryAsync<Category>();
         private readonly IRepositoryAsync<Product> productRepository = new RepositoryAsync<Product>();
         public async Task GenerateIdAsync()
         {
@@ -91,6 +92,7 @@ namespace NimbleSet.Service.Service
                 CategoryId = product.CategoryId,
                 Description = product.Description,
                 StockQuantity = product.StockQuantity,
+                UpdatedAt = DateTime.UtcNow
             };
             await productRepository.UpdateAsync(mapProduct);
             var rezult = new ProductForRezultDto()
@@ -108,10 +110,16 @@ namespace NimbleSet.Service.Service
         public async Task<ProductForRezultDto> CreateAsync(ProductForCreationDto productdto)
         {
             var product = (await productRepository.SelectAllAsync()).
-                FirstOrDefault(p => p.Equals(productdto));
+                FirstOrDefault(p => p.Name == productdto.Name);
             if (product != null)
             {
                 throw new CustomException(409, "Product is already exist");
+            }
+            var productIfCategory = (await repositoryAsync.SelectAllAsync()).
+                FirstOrDefault(c => c.Id == productdto.CategoryId);
+            if (productIfCategory is not null)
+            {
+                throw new CustomException(404, "Category is not found");
             }
             Product product1 = new Product()
             {
@@ -125,12 +133,12 @@ namespace NimbleSet.Service.Service
 
             ProductForRezultDto productForRezult = new ProductForRezultDto()
             {
-                Id = product.Id,
-                Name = product.Name,
-                Price = product.Price,
-                CategoryId = product.CategoryId,
-                Description = product.Description,
-                StockQuantity = product.StockQuantity,
+                Id = product1.Id,
+                Name = product1.Name,
+                Price = product1.Price,
+                CategoryId = product1.CategoryId,
+                Description = product1.Description,
+                StockQuantity = product1.StockQuantity,
             };
             return productForRezult;
             

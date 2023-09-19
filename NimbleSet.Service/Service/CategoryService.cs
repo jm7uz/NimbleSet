@@ -69,12 +69,14 @@ namespace NimbleSet.Service.Service
             var mapCategory = new Category()
             {
                 Name = category.Name,
+                UpdatedAt = DateTime.UtcNow
             };
             await repositoryCategory.UpdateAsync(mapCategory);
             var resultDto = new CategoryForRezultDto()
             {
                 Id = categoryDto.Id,
                 Name = category.Name,
+                
             };
             return resultDto;
         }
