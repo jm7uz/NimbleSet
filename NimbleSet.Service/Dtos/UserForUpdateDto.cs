@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NimbleSet.Service
+namespace Services.Dtos
 {
-    internal class Test
+    public class UserForUpdateDto
     {
     }
 }

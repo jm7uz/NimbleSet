@@ -13,10 +13,10 @@ using Newtonsoft.Json;
 
 namespace Data.Repositories
 {
-    public class Repository<TEntity> : IRepositoryAsync<TEntity> where TEntity : AudiTable
+    public class RepositoryAsync<TEntity> : IRepositoryAsync<TEntity> where TEntity : AudiTable
     {
         private readonly string Path;
-        public Repository()
+        public RepositoryAsync()
         {
             if (typeof(User) == typeof(TEntity))
             {

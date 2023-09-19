@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NimbleSet.Domain\NimbleSet.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using Domain.Commons;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace Domain.Entities
+namespace Services.Dtos
 {
-    public class Order : AudiTable
+    public class OrderForRezultDto
     {
+        public long Id { get; set; }
         public long CustomerId { get; set; }
-    
+        public DateTime OrderDate { get; set; }
+
     }
 }
