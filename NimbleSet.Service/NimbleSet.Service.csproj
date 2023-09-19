@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NimbleSet.Data\NimbleSet.Data.csproj" />
+    <ProjectReference Include="..\NimbleSet.Domain\NimbleSet.Domain.csproj" />
+    <ProjectReference Include="..\NimbleSet.Presentation\NimbleSet.Presentation.csproj" />
+  </ItemGroup>
+
 </Project>
