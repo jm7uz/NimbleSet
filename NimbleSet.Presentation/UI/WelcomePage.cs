@@ -49,9 +49,11 @@ public class WelcomePage
         }
         catch (Exception e)
         {
-            Console.WriteLine("Unexcepted Error");
+            Console.WriteLine($"Error {e}");
             return false;
         }
     }
+
+
 
 }

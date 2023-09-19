@@ -10,7 +10,6 @@ namespace Domain.Enums
     {
         Customer,
         Seller,
-        Admin,
         SuperAdmin,
     }
 }

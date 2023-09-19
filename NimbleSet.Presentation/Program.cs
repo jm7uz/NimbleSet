@@ -1,2 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+using NimbleSet.Presentation.UI;
+
+MainMenu mainMenu = new MainMenu();
+
+mainMenu.Banner();
+mainMenu.Menu();
+
